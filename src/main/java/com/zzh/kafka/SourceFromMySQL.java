@@ -14,7 +14,7 @@ public class SourceFromMySQL extends RichSourceFunction<Student> {
 
     private Connection connection;
     private PreparedStatement ps;
-    private boolean running;
+    private boolean running = true;
 
     @Override
     public void run(SourceContext<Student> ctx) throws Exception {
