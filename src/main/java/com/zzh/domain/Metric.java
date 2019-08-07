@@ -1,4 +1,4 @@
-package com.zzh.kafka;
+package com.zzh.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

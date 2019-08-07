@@ -1,6 +1,7 @@
 package com.zzh.kafka;
 
 import com.alibaba.fastjson.JSON;
+import com.zzh.domain.Metric;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 

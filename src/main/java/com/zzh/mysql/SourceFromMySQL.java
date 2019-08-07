@@ -1,5 +1,6 @@
-package com.zzh.kafka;
+package com.zzh.mysql;
 
+import com.zzh.domain.Student;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.functions.source.RichSourceFunction;
 
