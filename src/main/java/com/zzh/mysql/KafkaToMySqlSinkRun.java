@@ -22,7 +22,7 @@ public class KafkaToMySqlSinkRun {
         StreamExecutionEnvironment environment = StreamExecutionEnvironment.getExecutionEnvironment();
 
         Properties props = new Properties();
-        props.put("bootstrap.servers", "localhost:9092");
+         props.put("bootstrap.servers", "localhost:9092");
         props.put("zookeeper.connect", "localhost:2181");
         props.put("group.id", "metric-group");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");  //key 反序列化

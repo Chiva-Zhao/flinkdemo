@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.zzh;
+package com.zzh.simple;
 
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.tuple.Tuple2;
