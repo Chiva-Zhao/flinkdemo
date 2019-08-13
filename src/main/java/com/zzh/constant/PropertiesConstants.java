@@ -8,6 +8,8 @@ package com.zzh.constant;
 public class PropertiesConstants {
     public static final String AUTHOR = "zzh";
     public static final String KAFKA_BROKERS = "kafka.brokers";
+    public static final String KAFKA_SINK_BROKERS = "kafka.sink.brokers";
+    public static final String KAFKA_SINK_TOPIC = "kafka.sink.topic";
     public static final String DEFAULT_KAFKA_BROKERS = "localhost:9092";
     public static final String KAFKA_ZOOKEEPER_CONNECT = "kafka.zookeeper.connect";
     public static final String DEFAULT_KAFKA_ZOOKEEPER_CONNECT = "localhost:2181";
