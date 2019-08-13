@@ -1,6 +1,8 @@
 package com.zzh.utils;
 
+import com.zzh.es.Es5SinkFailureHandler;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
+import org.apache.flink.streaming.connectors.elasticsearch.ActionRequestFailureHandler;
 import org.apache.flink.streaming.connectors.elasticsearch.ElasticsearchSinkFunction;
 import org.apache.flink.streaming.connectors.elasticsearch5.ElasticsearchSink;
 
@@ -19,7 +21,9 @@ import java.util.Map;
  **/
 public class ElasticSearchSinkUtil {
     public static <T> void addSink(SingleOutputStreamOperator<T> data, int parallelism, Map<String, String> config, List<InetSocketAddress> hosts, ElasticsearchSinkFunction<T> function) {
-        ElasticsearchSink<T> sink = new ElasticsearchSink<>(config, hosts, function);
+        //ActionRequestFailureHandler failureHander = new RetryRejectedExecutionFailureHandler();
+        ActionRequestFailureHandler failureHander = new Es5SinkFailureHandler();//失败处理策略
+        ElasticsearchSink<T> sink = new ElasticsearchSink<>(config, hosts, function, failureHander);
         data.addSink(sink).setParallelism(parallelism);
     }
 
