@@ -13,7 +13,7 @@ import java.util.Map;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Metric {
+public class MetricEvent {
     public String name;
     public long timestamp;
     public Map<String, Object> fields;

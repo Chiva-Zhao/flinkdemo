@@ -14,6 +14,7 @@ import java.util.Properties;
  * @date 2019-8-6 19:44
  **/
 public class FlinkKafkaSourceRun {
+    public static final String topic = "students";
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         Properties props = new Properties();
@@ -24,7 +25,7 @@ public class FlinkKafkaSourceRun {
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("auto.offset.reset", "latest"); //value 反序列化
 
-        DataStreamSource dataStreamSource = env.addSource(new FlinkKafkaConsumer<>("metric", new KafkaDeserializationSchemaWrapper(new SimpleStringSchema()), props)).setParallelism(1);
+        DataStreamSource dataStreamSource = env.addSource(new FlinkKafkaConsumer<>(topic, new KafkaDeserializationSchemaWrapper(new SimpleStringSchema()), props)).setParallelism(1);
         dataStreamSource.print();
         env.execute("Flink add data source");
     }

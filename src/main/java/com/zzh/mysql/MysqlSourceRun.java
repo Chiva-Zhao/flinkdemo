@@ -9,7 +9,7 @@ import org.apache.flink.streaming.api.functions.sink.PrintSinkFunction;
  * @version 1.0
  * @date 2019-8-7 9:29
  **/
-public class FlinkMysqlSourceRun {
+public class MysqlSourceRun {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         DataStreamSource source = env.addSource(new SourceFromMySQL()).setParallelism(1);

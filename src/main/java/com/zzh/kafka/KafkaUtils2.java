@@ -7,6 +7,11 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 
 import java.util.Properties;
 
+/**
+ * bin\window\zookeeper-server-start.bat config\zookeeper.properties
+ * bin\window\kafka-server-start.bat config\server.properties
+ * bin\windiw\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic student
+ */
 public class KafkaUtils2 {
     public static final String broker_list = "localhost:9092";
     public static final String topic = "student";  // kafka topic

@@ -1,7 +1,7 @@
 package com.zzh.kafka;
 
 import com.alibaba.fastjson.JSON;
-import com.zzh.domain.Metric;
+import com.zzh.domain.MetricEvent;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
@@ -9,6 +9,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+/**
+ * bin\window\zookeeper-server-start.bat config\zookeeper.properties
+ * bin\window\kafka-server-start.bat config\server.properties
+ * bin\windiw\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic metric
+ */
 public class KafkaUtils {
     public static final String broker_list = "localhost:9092";
     public static final String topic = "metric";  // kafka topic，Flink 程序中需要和这个统一 
@@ -20,7 +25,7 @@ public class KafkaUtils {
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer"); //value 序列化
         KafkaProducer producer = new KafkaProducer<String, String>(props);
 
-        Metric metric = new Metric();
+        MetricEvent metric = new MetricEvent();
         metric.setTimestamp(System.currentTimeMillis());
         metric.setName("mem");
         Map<String, String> tags = new HashMap<>();
@@ -45,7 +50,7 @@ public class KafkaUtils {
 
     public static void main(String[] args) throws InterruptedException {
         while (true) {
-            Thread.sleep(30000);
+            Thread.sleep(10000);
             writeToKafka();
         }
     }
