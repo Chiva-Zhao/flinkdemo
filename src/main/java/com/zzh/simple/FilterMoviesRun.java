@@ -2,7 +2,6 @@ package com.zzh.simple;
 
 import com.zzh.domain.Movie;
 import org.apache.flink.api.java.ExecutionEnvironment;
-import org.apache.flink.api.java.operators.DataSource;
 import org.apache.flink.api.java.tuple.Tuple3;
 import org.apache.flink.core.fs.FileSystem;
 
@@ -14,16 +13,16 @@ import java.util.HashSet;
  * @version 1.0
  * @date 2019-8-14 14:29
  **/
-public class FilterMovies {
+public class FilterMoviesRun {
     private static final ExecutionEnvironment environment = ExecutionEnvironment.getExecutionEnvironment();
     private static final String folder = "ml-latest-small/";
 
     public static void main(String[] args) throws Exception {
-        DataSource<Tuple3<Long, String, String>> dataSourceMovies = environment.readCsvFile(folder + "movies.csv")
+        environment.readCsvFile(folder + "movies.csv")
                 .ignoreFirstLine().ignoreInvalidLines()
                 .parseQuotedStrings('"')
-                .types(Long.class, String.class, String.class);
-        dataSourceMovies.map(FilterMovies::makeMovie)
+                .types(Long.class, String.class, String.class)
+                .map(FilterMoviesRun::makeMovie)
                 .filter(movie -> movie.getGenres().contains("Drama"))
                 .writeAsText(folder + "drama.csv", FileSystem.WriteMode.OVERWRITE);
         environment.execute("fromElementRun");
