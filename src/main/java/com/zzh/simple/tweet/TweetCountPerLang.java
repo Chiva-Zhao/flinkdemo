@@ -1,4 +1,4 @@
-package com.zzh.simple;
+package com.zzh.simple.tweet;
 
 import com.zzh.domain.Tweet;
 import org.apache.flink.api.java.functions.KeySelector;

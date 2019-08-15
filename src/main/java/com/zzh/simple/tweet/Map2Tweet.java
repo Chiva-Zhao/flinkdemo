@@ -1,9 +1,9 @@
-package com.zzh.simple;
+package com.zzh.simple.tweet;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zzh.domain.Tweet;
 import org.apache.flink.api.common.functions.MapFunction;
+import org.codehaus.jackson.JsonNode;
+import org.codehaus.jackson.map.ObjectMapper;
 
 class Map2Tweet implements MapFunction<String, Tweet> {
     private static final ObjectMapper mapper = new ObjectMapper();

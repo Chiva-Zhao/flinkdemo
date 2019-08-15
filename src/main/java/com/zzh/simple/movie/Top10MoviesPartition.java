@@ -1,4 +1,4 @@
-package com.zzh.simple;
+package com.zzh.simple.movie;
 
 import org.apache.flink.api.common.functions.GroupReduceFunction;
 import org.apache.flink.api.common.functions.JoinFunction;
