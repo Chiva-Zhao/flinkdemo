@@ -1,10 +1,7 @@
 package com.zzh.simple;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zzh.domain.Tweet;
 import org.apache.flink.api.common.functions.FilterFunction;
-import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.twitter.TwitterSource;
 
@@ -31,18 +28,6 @@ public class FilterEnglishTweets {
                         return tweet.getLang().equals("en");
                     }
                 }).print();
-    }
-
-    private static class Map2Tweet implements MapFunction<String, Tweet> {
-        private static final ObjectMapper mapper = new ObjectMapper();
-
-        @Override
-        public Tweet map(String jsonTweet) throws Exception {
-            JsonNode node = mapper.readTree(jsonTweet);
-            JsonNode textNode = node.get("text");
-            JsonNode langNode = node.get("land");
-            return new Tweet(textNode.asText(), langNode.asText());
-        }
     }
 }
 
