@@ -8,6 +8,7 @@ import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.tuple.Tuple3;
 import org.apache.flink.util.Collector;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -53,14 +54,14 @@ public class AggRaitingMovieRun {
                         double score = 0d;
                         for (Tuple3<String, String, Double> item : iterable) {
                             genra = item.f1;
-                            score += item.f2.doubleValue();
+                            score += item.f2;
                             count++;
                         }
                         collector.collect(new Tuple2<>(genra, score / count));
                     }
                 }).collect();
         String rst = distribution.stream()
-                .sorted((r1, r2) -> Double.compare(r1.f1, r2.f1))
+                .sorted(Comparator.comparingDouble(r -> r.f1))
                 .map(Objects::toString)
                 .collect(Collectors.joining("\n"));
         System.out.println(rst);

@@ -16,6 +16,23 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+/**
+ * {
+ * 	"text": "Watchinga#Pluralsightcoursenow!",
+ * 	"lang": "en",
+ * 	"entities": {
+ * 		"hashtags": [
+ * 			"Pluralsight"
+ * 		],
+ * 		"urls": [
+ *
+ * 		],
+ * 		"user_mentions": [
+ *
+ * 		]
+ *        }
+ * }
+ */
 public class TweetWithTags {
     private String text;
     private String lang;

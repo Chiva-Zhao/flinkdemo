@@ -56,6 +56,7 @@ public class TopHashTagTweet {
                         }
                         out.collect(new Tuple3<>(new Date(window.getEnd()), topTag, count));
                     }
-                }).print();
+                })
+                .print();
     }
 }
