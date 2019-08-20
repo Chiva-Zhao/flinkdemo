@@ -19,7 +19,7 @@ import org.apache.flink.util.Collector;
  * @version 1.0
  * @date 2019-8-20 14:13
  **/
-public class CarSpeedRun {
+public class CarSpeedWithValueStateRun {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         ParameterTool params = ParameterTool.fromArgs(args);
